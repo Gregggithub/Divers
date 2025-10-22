@@ -1,0 +1,158 @@
+Parfait 👍 Tu veux donc créer un template Jira d’User Story (US) pour chaque sujet lié à la gestion de l’obsolescence Talend Big Data, afin d’avoir une trame claire pour les futures mises à jour (TAC, Studio, JobServer).
+
+Voici trois modèles d’User Story adaptés à Jira, rédigés selon la même structure :
+
+
+---
+
+🧩 1️⃣ Application de nouveaux patchs de la TAC (Talend Administration Center)
+
+Titre Jira :
+📦 [OBSO] Application du dernier patch de la TAC en environnement [DEV / REC / PROD]
+
+User Story :
+En tant qu’équipe d’administration Talend,
+je veux appliquer le dernier patch correctif de la TAC,
+afin de maintenir la compatibilité avec les composants Talend et corriger les vulnérabilités connues.
+
+Contexte :
+
+La TAC actuelle est en version x.y.z.
+
+Un nouveau patch est disponible auprès de l’éditeur Talend.
+
+Ce patch corrige des failles de sécurité / bugs critiques ou améliore la compatibilité avec les versions du Studio et des JobServers.
+
+
+Critères d’acceptation :
+
+[ ] Le patch TAC est téléchargé et documenté (version, changelog).
+
+[ ] Le patch est appliqué en environnement de préproduction avant la production.
+
+[ ] Les tests de connexion avec le Studio, les JobServers et les Runtimes sont validés.
+
+[ ] Les logs applicatifs ne présentent pas d’erreur critique après redémarrage.
+
+[ ] Le plan de rollback est testé et documenté.
+
+[ ] La documentation interne (versionning, guide d’exploitation) est mise à jour.
+
+
+Tâches techniques (exemples) :
+
+Préparer un snapshot complet du dossier TAC et de la base de métadonnées.
+
+Appliquer le patch en suivant la documentation officielle.
+
+Vérifier les paramètres de configuration (datasource, users, scheduler).
+
+Réaliser des tests fonctionnels (déploiement, planification, monitoring).
+
+Mettre à jour le registre de versions internes.
+
+
+
+---
+
+🧩 2️⃣ Application des releases du Talend Studio
+
+Titre Jira :
+🎨 [OBSO] Application de la nouvelle release du Talend Studio version [x.y.z]
+
+User Story :
+En tant qu’équipe de développement Talend,
+je veux mettre à jour le Talend Studio vers la dernière release stable,
+afin de bénéficier des corrections, optimisations de performance et compatibilités avec les composants Big Data récents.
+
+Contexte :
+
+La version actuelle du Studio est x.y.z.
+
+Une nouvelle release (ou patch cumulative) est disponible auprès de Talend.
+
+Cette mise à jour doit rester alignée avec les versions TAC, JobServer et Runtimes.
+
+
+Critères d’acceptation :
+
+[ ] La version du Studio est mise à jour sur les postes des développeurs / VDI.
+
+[ ] Les projets sont importés et ouverts sans erreur de compatibilité.
+
+[ ] Les connexions (TAC, Git, Nexus, Hadoop, etc.) sont validées.
+
+[ ] Les builds et publications vers la TAC fonctionnent normalement.
+
+[ ] Les documentations internes (guide développeur, prérequis) sont mises à jour.
+
+
+Tâches techniques (exemples) :
+
+Télécharger la nouvelle version depuis Talend.
+
+Mettre à jour la configuration .ini (mémoire, proxy, etc.).
+
+Tester les projets critiques (Big Data, ESB, Data Quality).
+
+Vérifier les dépendances Maven/Nexus.
+
+Former / informer les développeurs sur les nouveautés.
+
+
+
+---
+
+🧩 3️⃣ Application du dernier patch des JobServers
+
+Titre Jira :
+⚙️ [OBSO] Application du dernier patch de sécurité des Talend JobServers
+
+User Story :
+En tant qu’équipe d’exploitation Talend,
+je veux mettre à jour les JobServers avec le dernier patch disponible,
+afin de assurer la stabilité des exécutions et corriger les vulnérabilités de sécurité.
+
+Contexte :
+
+Les JobServers actuels tournent en version x.y.z.
+
+Un patch correctif ou de sécurité est fourni par Talend.
+
+Ce patch doit être appliqué sur tous les environnements (DEV, REC, PROD).
+
+
+Critères d’acceptation :
+
+[ ] Le patch est téléchargé et validé en préproduction.
+
+[ ] Le service JobServer redémarre sans erreur après mise à jour.
+
+[ ] Les jobs déployés depuis la TAC s’exécutent correctement.
+
+[ ] Les logs jobserver.out et agent.log ne présentent pas d’anomalie.
+
+[ ] Le rollback (si nécessaire) est possible et documenté.
+
+[ ] Le registre des versions (inventaire) est mis à jour.
+
+
+Tâches techniques (exemples) :
+
+Sauvegarder les dossiers conf et logs.
+
+Appliquer le patch selon la documentation Talend.
+
+Vérifier la configuration du JMX et du Remote Server.
+
+Tester les exécutions de jobs simples et complexes.
+
+Consigner les résultats dans le rapport de validation.
+
+
+
+---
+
+Souhaites-tu que je te regroupe ces trois templates dans un seul modèle Jira paramétrable (avec des champs dynamiques : Composant, Version actuelle, Version cible, Environnement, etc.) pour faciliter la création des tickets ?
+👉 Cela permettrait d’avoir une trame unique utilisable pour tous les composants Talend (TAC, Studio, JobServer, Runtime).
+
