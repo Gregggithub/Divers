@@ -1,0 +1,11 @@
+String groupId = "kf002i000773-AP25711-kafka-connect-group";
+
+Pattern pattern = Pattern.compile("-(AP\\d+)-");
+Matcher matcher = pattern.matcher(groupId);
+
+String result = null;
+if (matcher.find()) {
+    result = matcher.group(1);  // APyyyy
+}
+
+System.out.println(result); // affiche : AP25711
