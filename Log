@@ -1,5 +1,18 @@
-java \
-  -Dlogging.config=/chemin/absolu/logback-spring.xml \
-  -Dlogging.file.path=/var/log/myservice \
-  -Dlogging.file.name=/var/log/myservice/application.log \
-  -jar myservice.jar
+<configuration>
+
+    <!-- Log en fichier simple -->
+    <appender name="FILE" class="ch.qos.logback.core.FileAppender">
+        <file>/var/log/myservice/application.log</file>
+        <append>true</append>
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss} %-5level %logger - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <root level="INFO">
+        <appender-ref ref="FILE"/>
+    </root>
+
+</configuration>
+
+java -Dlogging.config=/opt/talend/logback-spring.xml -jar myservice.jar
