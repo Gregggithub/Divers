@@ -1,23 +1,5 @@
-<configuration>
-
-    <springProperty scope="context" name="LOG_PATH" source="logging.file.path"/>
-    <springProperty scope="context" name="LOG_FILE" source="logging.file.name"/>
-
-    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <file>${LOG_FILE}</file>
-
-        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <fileNamePattern>${LOG_PATH}/application.%d{yyyy-MM-dd}.log</fileNamePattern>
-            <maxHistory>7</maxHistory>
-        </rollingPolicy>
-
-        <encoder>
-            <pattern>%d{HH:mm:ss.SSS} %-5level %logger - %msg%n</pattern>
-        </encoder>
-    </appender>
-
-    <root level="INFO">
-        <appender-ref ref="FILE"/>
-    </root>
-
-</configuration>
+java \
+  -Dlogging.config=/chemin/absolu/logback-spring.xml \
+  -Dlogging.file.path=/var/log/myservice \
+  -Dlogging.file.name=/var/log/myservice/application.log \
+  -jar myservice.jar
