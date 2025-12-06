@@ -1,0 +1,24 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: dynamic-backend
+  namespace: my-namespace
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+    nginx.ingress.kubernetes.io/use-regex: "true"
+    nginx.ingress.kubernetes.io/service-upstream: "true"
+    nginx.ingress.kubernetes.io/backend: "$service_name"
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: mavip
+    http:
+      paths:
+      - path: /(?<service_name>[^/]+)(/|$)
+        pathType: Prefix
+        backend:
+          service:
+            # Ce nom est ignoré car remplacé dynamiquement
+            name: placeholder
+            port:
+              number: 80
