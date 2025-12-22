@@ -1,0 +1,1 @@
+sed -E 's/^([^.]+(\.[^.]+)*)@(externe\.)?jems\.com$/\1_at_jems.com/'
